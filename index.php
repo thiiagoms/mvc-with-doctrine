@@ -131,7 +131,6 @@
     <?php 
       if(isset($_GET['delete'])){
         $id = $_GET['delete'];
-        echo $id;
         $crud->setValues("'$id'");
         if($crud->deleteUser() == 1) {
     ?>
