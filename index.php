@@ -128,6 +128,21 @@
       </td>
       </tr>
     <?php endforeach; ?>
+    <?php 
+      if(isset($_GET['delete'])){
+        $id = $_GET['delete'];
+        echo $id;
+        $crud->setValues("'$id'");
+        if($crud->deleteUser() == 1) {
+    ?>
+    <div class="alert alert-success" role="alert">
+      Delete Successfull! <a href='index.php' class='btn-back'>Back do home!</a>
+    </div>
+    <?php } else { ?>
+    <div class="alert alert-danger" role="alert">
+      Failed to delete! <a href='index.php' class='btn-back'>Back do home!</a>
+    </div>
+   <?php } } ?>
   </tbody>
 </table>
     </div>
