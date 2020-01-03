@@ -1,5 +1,4 @@
 <?php
- session_start();
   require_once("config".DIRECTORY_SEPARATOR."crud.php");
   $crud = new CRUD();
 ?>
@@ -22,7 +21,7 @@
         <form action="" method="post">
           <?php 
             if(isset($_GET['update'])) {
-              $id = $_GET['update'];
+              $id = addslashes($_GET['update']);
               $crud->setValues("'$id'");
               foreach ($crud->readUser() as $row) {
           ?>
