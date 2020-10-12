@@ -19,13 +19,13 @@
     }
 
     public function connectDatabaseConnection(){
-        try {
-          $this->conn = new PDO("mysql:host={$this->dbHost['local']};dbname={$this->dbName['local']}", "{$this->dbUser['local']}", "{$this->dbPass['local']}");
-          $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-          echo "Error: {$e->getMessage()}";
-        }
-        return $this->conn;
+      try {
+        $this->conn = new PDO("mysql:host={$this->dbHost['local']};dbname={$this->dbName['local']}", "{$this->dbUser['local']}", "{$this->dbPass['local']}");
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      } catch (PDOException $e) {
+        echo "Error: {$e->getMessage()}";
+      }
+      return $this->conn;
     }
 
     public function closeDatabaseConnection() {
@@ -39,4 +39,3 @@
       return $this->query;
     }
   }
-?>

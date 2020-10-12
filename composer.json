@@ -1,0 +1,21 @@
+{
+    "description": "Simple PHP MVC project",
+    "authors": [
+
+        {
+            "name": "Thiago Martins AKA ekkopy",
+            "email": "thiagom.devsec@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Core\\": "core",
+            "Utils\\": "utils",
+            "Database\\": "database"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.2"
+    }
+}
