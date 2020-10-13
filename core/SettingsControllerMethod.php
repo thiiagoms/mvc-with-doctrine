@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Settings
+class SettingsControllerMethod
 {
 
 
@@ -43,5 +43,9 @@ class Settings
         $class = new $classLoads;
 
         $class->$urlMethod();
+    }
+
+    public function run() {
+        return $this->loadControllerMethod();
     }
 }

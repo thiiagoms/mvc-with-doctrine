@@ -7,14 +7,14 @@
 </head>
 <body>
 <?php
-  error_reporting(E_ALL);
+
   require "./vendor/autoload.php";
 
-  use Database\Database;
+  use Core\SettingsControllerMethod as HomeSettings;
 
-  $utils = new Database();
-  $utils->open();
+  $app = new HomeSettings();
 
+  $app->run();
 ?>
 </body>
 </html>

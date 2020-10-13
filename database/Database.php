@@ -28,10 +28,12 @@ class Database extends Utils {
         $this->dbName = $_ENV['DATABASE_NAME'];
         $this->dbUser = $_ENV['DATABASE_USER'];
         $this->dbPass = $_ENV['DATABASE_PASS'];
+       
+        $this->open();
+     
     }
 
     public function open() {
-        
         try {
             $this->dbCon = new PDO(
                 $this->dbDriver  
@@ -47,7 +49,7 @@ class Database extends Utils {
         }
     }
 
-    public function runQuery(string  $query) {
+    public function query(string  $query) {
         $this->query = $this->dbCon->prepare($query);
         $this->query->execute();
         return $this->query;

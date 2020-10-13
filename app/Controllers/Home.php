@@ -5,6 +5,7 @@ namespace App\Controllers;
 class Home {
 
     public function index() {
-        echo "Hello World from Home";
+        $home = new \Core\SettingsView("Views/index");
+        $home->render();
     }
 }
