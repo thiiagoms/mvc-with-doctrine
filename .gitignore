@@ -2,6 +2,9 @@
 composer.phar
 /vendor/
 
+### env ####
+.env
+
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
