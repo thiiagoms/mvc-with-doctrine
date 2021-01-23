@@ -13,5 +13,8 @@ composer.phar
 !.vscode/extensions.json
 *.code-workspace
 
+### idea ###
+.idea
+
 ## roadmap ###
 ROADMAP.md
