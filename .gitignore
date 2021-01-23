@@ -2,6 +2,9 @@
 composer.phar
 /vendor/
 
+### env ####
+.env
+
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
@@ -9,6 +12,9 @@ composer.phar
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+### idea ###
+.idea
 
 ## roadmap ###
 ROADMAP.md

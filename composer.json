@@ -1,7 +1,6 @@
 {
     "description": "Simple PHP MVC project",
     "authors": [
-
         {
             "name": "Thiago Martins AKA ekkopy",
             "email": "thiagom.devsec@gmail.com"
@@ -10,12 +9,15 @@
     "autoload": {
         "psr-4": {
             "App\\": "app",
-            "Core\\": "core",
-            "Utils\\": "utils",
-            "Database\\": "database"
+            "Core\\": "core"
         }
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
     "require": {
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.2",
+        "doctrine/orm": "^2.7.0",
+        "doctrine/migrations": "^3.0"
     }
 }
