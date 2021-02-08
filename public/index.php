@@ -4,19 +4,14 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Http\Controllers\AnimesController;
 
-switch($_SERVER['PATH_INFO']):
+$path = $_SERVER['PATH_INFO'];
+$routes = require __DIR__ . '/../routes/web.php';
 
-    case '/list-animes':
-        $controlller = new AnimesController();
-        $controlller->index();
-        break;
-    case '/create-anime':
-        $controller = new AnimesController();
-        $controller->create();
-        break;
-    case '/store-anime':
-        $controller = new AnimesController();
-        $controller->store();
-    default:
-        break;
-endswitch;
+if (!array_key_exists($path, $routes)) {
+    http_response_code(404);
+    exit();
+}
+
+$classController = $routes[$path];
+$controller = new AnimesController();
+$controller->$classController();
