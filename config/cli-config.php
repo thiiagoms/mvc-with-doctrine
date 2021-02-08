@@ -1,7 +1,10 @@
 <?php
 
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Core\Infra\EntityManagerFactory;
+
 require __DIR__ . '/../vendor/autoload.php';
 
-return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet(
-   (new \Core\Infra\EntityManagerFactory())->getEntityManager()
+return ConsoleRunner::createHelperSet(
+   (new EntityManagerFactory())->getEntityManager()
 );

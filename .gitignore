@@ -16,5 +16,6 @@ composer.phar
 ### idea ###
 .idea
 
-## roadmap ###
-ROADMAP.md
+### database ###
+*.sqlite
+*.sqlite3
