@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 /**
- *  User Indetity
+ *  User entity
  * 
  * @Entity
  * @Table(name="user")
