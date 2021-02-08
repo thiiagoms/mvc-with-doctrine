@@ -1,9 +1,6 @@
 # DevMode
-DEV_MODE=false
+DEV_MODE=
 
 # Database settings
-DATABASE_DRIVE=pdo_mysql
-DATABASE_HOST=127.0.0.1
-DATABASE_NAME=homestead
-DATABASE_USER=homestead
-DATABASE_PASS=homestead
+DATABASE_DRIVE=
+DATABASE_PATH=
