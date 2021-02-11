@@ -1,6 +1,6 @@
 # DevMode
-DEV_MODE=
+DEV_MODE=false
 
 # Database settings
-DATABASE_DRIVE=
-DATABASE_PATH=
+DATABASE_DRIVE=pdo_sqlite
+DATABASE_PATH=/../database.sqlite
