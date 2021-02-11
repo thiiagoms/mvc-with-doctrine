@@ -3,4 +3,4 @@ DEV_MODE=false
 
 # Database settings
 DATABASE_DRIVE=pdo_sqlite
-DATABASE_PATH=/../database.sqlite
+DATABASE_PATH=database.sqlite
