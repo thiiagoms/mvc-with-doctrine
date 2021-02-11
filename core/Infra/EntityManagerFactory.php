@@ -17,7 +17,7 @@ class EntityManagerFactory
 
         $database = array(
             'driver' => $_ENV['DATABASE_DRIVE'],
-            'path' => $_ENV['DATABASE_PATH'],
+            'path' => __DIR__ . '/../../' . $_ENV['DATABASE_PATH'],
             $isDevMode
         );
 
