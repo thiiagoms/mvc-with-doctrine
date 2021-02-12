@@ -31,6 +31,12 @@ class Anime
         return $this->_id;
     }
 
+    public function setId(int $id): self
+    {
+        $this->_id = $id;
+        return $this;
+    }
+
     public function getName(): string
     {
         return $this->_name;
