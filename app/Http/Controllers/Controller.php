@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-interface Controller
+abstract class Controller
 {
-    public function index(): void;
-    public function create(): void;
-    public function store(): void;
-    public function delete(): void;
-    public function update(): void;
+    public function render(string $template, array $data): string
+    {
+        extract($data);
+        ob_start();
+        require __DIR__ . '/../../../resources/views/animes/' . $template . '.php';
+        $html = ob_get_clean();
+        
+        return $html;
+    }
 }

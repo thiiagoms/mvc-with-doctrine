@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\InterfaceController;
 use App\Entity\Anime;
 use Core\Infra\EntityManagerFactory;
 
-class AnimesController implements Controller
+class AnimesController extends Controller implements InterfaceController
 {
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
@@ -23,14 +24,25 @@ class AnimesController implements Controller
         $animesRepo = $this->_entityManager->getRepository(Anime::class);
         $title = "List animes";
         $animes = $animesRepo->findAll();
-        require __DIR__ . '/../../../resources/views/animes/index.php';
+
+        echo $this->render(
+            'index',
+            [
+                'title' => $title,
+                'animes' => $animes
+            ]
+        );
     }
 
     public function create(): void
     {
         $title = "Insert anime";
         $button = "Add";
-        require __DIR__ . '/../../../resources/views/animes/form.php';
+
+        echo $this->render('form', [
+            'title' => $title,
+            'button' => $button
+        ]);
     }
 
     public function store(): void
@@ -46,7 +58,7 @@ class AnimesController implements Controller
             }
         } else {
             $anime->setName($animeName);
-            $this->_entityManager->persist($anime); 
+            $this->_entityManager->persist($anime);
         }
 
         $this->_entityManager->flush();
@@ -90,6 +102,10 @@ class AnimesController implements Controller
         $anime = $animesRepo->find($id);
         $title = "Update anime title";
         $button = "Update";
-        require __DIR__ . '/../../../resources/views/animes/form.php';
+        echo $this->render('form', [
+            'title' => $title,
+            'anime' => $anime,
+            'button' => $button
+        ]);
     }
 }
