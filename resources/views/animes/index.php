@@ -4,8 +4,12 @@
 
 <ul class="list-group">
     <?php foreach ($animes as $anime) : ?>
-        <li class="list-group-item">
+        <li class="list-group-item d-flex justify-content-between">
             <?= $anime->getName(); ?>
+            <span>
+                <a href="/update-anime?id=<?= $anime->getId(); ?>" class="href btn btn-info btn-sm">Update</a>
+                <a href="/delete-anime?id=<?= $anime->getId(); ?>" class="href btn btn-danger btn-sm">Delete</a>
+            </span>
         </li>
     <?php endforeach; ?>
 </ul>
