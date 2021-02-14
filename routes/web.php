@@ -1,11 +1,17 @@
 <?php
 
 $routes = [
-    '/list-animes' => 'index',
-    '/create-anime' => 'create',
-    '/store-anime' => 'store',
-    '/delete-anime' => 'delete',
-    '/update-anime' => 'update'
+    'animes' => [
+        'list-animes' => 'index',
+        'create-anime' => 'create',
+        'store-anime' => 'store',
+        'delete-anime' => 'delete'
+    ],
+    'user' => [
+        'login' => 'auth',
+        'create-user' => 'create',
+        'store-user' => 'store'
+    ]
 ];
 
 return $routes;
