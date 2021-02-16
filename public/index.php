@@ -17,9 +17,11 @@ if (!array_key_exists($controller, $routes)) {
     exit();
 }
 
+session_start();
+
 if ($controller === "animes") {
 	$class = new AnimesController();
-} else if ($controller === "users") {
+} else if ($controller === "user") {
 	$class = new UserController();
 } 
 

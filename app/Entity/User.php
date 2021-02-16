@@ -56,4 +56,9 @@ class User
         $this->_password = $password;
         return $this;
     }
+
+    public function checkPassword(string $password): bool
+    {
+        return password_verify($password, $this->_password);
+    }
 }

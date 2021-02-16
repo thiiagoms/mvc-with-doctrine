@@ -4,6 +4,7 @@ namespace App\Interface;
 
 interface UserInterface
 {
-    public function store(): void;
-    public function create(): void;
+    public function auth(): void;
+    public function login(): void;
+    public function store(): void;  
 }

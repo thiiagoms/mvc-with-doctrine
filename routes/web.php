@@ -2,13 +2,16 @@
 
 $routes = [
     'animes' => [
-        'list-animes' => 'index',
         'create-anime' => 'create',
+        'delete-anime' => 'delete',
+        'list-animes' => 'index',
         'store-anime' => 'store',
-        'delete-anime' => 'delete'
+        'update-anime' => 'update'
+        
     ],
     'user' => [
-        'login' => 'auth',
+        'login' => 'login',
+        'auth' => 'auth',
         'create-user' => 'create',
         'store-user' => 'store'
     ]
