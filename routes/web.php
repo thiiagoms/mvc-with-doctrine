@@ -11,9 +11,8 @@ $routes = [
     ],
     'user' => [
         'login' => 'login',
-        'auth' => 'auth',
-        'create-user' => 'create',
-        'store-user' => 'store'
+        'auth-login' => 'auth',
+        'logout' => 'logout'
     ]
 ];
 

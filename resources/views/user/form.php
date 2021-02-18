@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../header.php' ?>
 
-<form action="/user/auth" method="post">
+<form action="/user/auth-login" method="post">
     <div class="form-group">
         <label for="userEmail">E-mail: </label>
         <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Enter e-mail">

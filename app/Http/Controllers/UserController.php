@@ -33,7 +33,9 @@ class UserController extends Controller implements UserInterface
             );
 
             if (is_null($email) || $email === false) {
-                echo "E-mail is invalid";
+                $_SESSION['alertClass'] = 'danger';
+                $_SESSION['message'] = "E-mail is invalid";
+                header('Location: /user/login');
                 return;
             }
 
@@ -47,11 +49,13 @@ class UserController extends Controller implements UserInterface
             $user =  $userRepo->findOneBy(['_email' => $email]);
 
             if (is_null($user) || !$user->checkPassword($password)) {
-                echo "E-mail or password are incorrect!";
+                $_SESSION['alertClass'] = 'danger';
+                $_SESSION['message'] = "E-mail or password are incorrect!";
+                header('Location: /user/login');
                 return;
             }
 
-            $_SESSION['login'] = true;
+            $_SESSION['logged'] = true;
 
             header('Location: /animes/list-animes');
             
@@ -67,7 +71,9 @@ class UserController extends Controller implements UserInterface
         ]);
     }
 
-    public function store(): void
+    public function logout(): void
     {
+        session_destroy();
+        header('Location: /user/login');
     }
 }

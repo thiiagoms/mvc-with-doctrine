@@ -12,7 +12,7 @@ echo PHP_EOL . <<<EOL
     ▐─▀▀▀▐█▌▀▀███▀█─▌
     ▐▄───▄█───▄█▌▄█
     
-    [*] create User on application via CLI!
+    [*] create user on application via CLI!
     [*] Last update: 2021-02-16
     [*] Author: Thiago Martins AKA yassuke
 EOL . PHP_EOL.PHP_EOL;
@@ -40,7 +40,7 @@ if (is_null($userEmail)) {
     $user->setPassword($password);
     $entityManager->persist($user);
     $entityManager->flush();
-    echo "[*] Welcome {$email}!!\n";
+    echo "[*] Welcome {$email}!!" . PHP_EOL;
     return;
 }
 
