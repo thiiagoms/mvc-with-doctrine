@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\InterfaceController;
+use App\Interface\AnimesInterface;
 use App\Entity\Anime;
 use Core\Infra\EntityManagerFactory;
 
-class AnimesController extends Controller implements InterfaceController
+class AnimesController extends Controller implements AnimesInterface
 {
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
@@ -26,7 +26,7 @@ class AnimesController extends Controller implements InterfaceController
         $animes = $animesRepo->findAll();
 
         echo $this->render(
-            'index',
+            'animes/index',
             [
                 'title' => $title,
                 'animes' => $animes
@@ -39,7 +39,7 @@ class AnimesController extends Controller implements InterfaceController
         $title = "Insert anime";
         $button = "Add";
 
-        echo $this->render('form', [
+        echo $this->render('animes/form', [
             'title' => $title,
             'button' => $button
         ]);
@@ -63,7 +63,7 @@ class AnimesController extends Controller implements InterfaceController
 
         $this->_entityManager->flush();
 
-        header('Location: /list-animes', true, 302);
+        header('Location: /animes/list-animes', true, 302);
     }
 
     public function delete(): void
@@ -75,14 +75,14 @@ class AnimesController extends Controller implements InterfaceController
         );
 
         if (is_null($id) || $id === false) {
-            header('Location: /list-animes');
+            header('Location: /animes/list-animes');
             return;
         }
 
         $anime = $this->_entityManager->getReference(Anime::class, $id);
         $this->_entityManager->remove($anime);
         $this->_entityManager->flush();
-        header('Location: /list-animes');
+        header('Location: /animes/list-animes');
     }
 
     public function update(): void
@@ -94,7 +94,7 @@ class AnimesController extends Controller implements InterfaceController
         );
 
         if (is_null($id) || $id === false) {
-            header('Location: /list-animes');
+            header('Location: /animes/list-animes');
             return;
         }
 
@@ -102,7 +102,7 @@ class AnimesController extends Controller implements InterfaceController
         $anime = $animesRepo->find($id);
         $title = "Update anime title";
         $button = "Update";
-        echo $this->render('form', [
+        echo $this->render('animes/form', [
             'title' => $title,
             'anime' => $anime,
             'button' => $button

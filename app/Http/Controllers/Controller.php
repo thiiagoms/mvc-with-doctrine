@@ -8,7 +8,7 @@ abstract class Controller
     {
         extract($data);
         ob_start();
-        require __DIR__ . '/../../../resources/views/animes/' . $template . '.php';
+        require __DIR__ . '/../../../resources/views/' . $template . '.php';
         $html = ob_get_clean();
         
         return $html;

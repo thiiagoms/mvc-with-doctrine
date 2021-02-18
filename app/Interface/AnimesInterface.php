@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Interface;
 
-interface InterfaceController
+interface AnimesInterface
 {
     public function index(): void;
     public function create(): void;
