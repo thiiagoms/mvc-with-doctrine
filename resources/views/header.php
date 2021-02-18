@@ -10,9 +10,30 @@
 </head>
 
 <body>
+    <?php if (isset($_SESSION['logged'])) : ?>
+        <nav class="navbar navbar-dark bg-dark mb-4">
+            <a href="/animes/list-animes" class="navbar-brand">Home</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="/user/logout" class="nav-link">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+    <?php endif; ?>
 
     <body>
         <div class="container">
             <div class="jumbotron">
                 <h1 class="display-4"><?= $title; ?></h1>
             </div>
+
+            <?php if (isset($_SESSION['message'])) : ?>
+                <div class="alert alert-<?= $_SESSION['alertClass']; ?>">
+                    <?= $_SESSION['message']; ?>
+                </div>
+            <?php
+                unset($_SESSION['message']);
+                unset($_SESSION['message']);
+            endif;
+            ?>

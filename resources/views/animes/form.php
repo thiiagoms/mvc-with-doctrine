@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../header.php' ?>
 
-<form action="/store-anime<?= isset($anime) ? '?id=' . $anime->getId() : '' ; ?>" method="POST">
+<form action="/animes/store-anime<?= isset($anime) ? '?id=' . $anime->getId() : '' ; ?>" method="POST">
     <div class="form-group">
         <label for="animeName">Anime name: </label>
         <input type="text" 
