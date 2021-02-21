@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Interface\AnimesInterface;
+use App\Interfaces\AnimesInterface;
 use App\Entity\Anime;
 use Core\Infra\EntityManagerFactory;
 
