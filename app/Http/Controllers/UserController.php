@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Entity\User;
 use App\Http\Controllers\Controller;
-use App\Interface\UserInterface;
+use App\Interfaces\UserInterface;
 use Core\Infra\EntityManagerFactory;
 use Exception;
 
 class UserController extends Controller implements UserInterface
 {
-     /**
+    /**
      * @var \Doctrine\ORM\EntityManagerInterface
      */
     private $_entityManager;
@@ -23,7 +23,7 @@ class UserController extends Controller implements UserInterface
     public function auth(): void
     {
         $userRepo = $this->_entityManager->getRepository(User::class);
-        
+
         try {
 
             $email = filter_input(
@@ -36,7 +36,7 @@ class UserController extends Controller implements UserInterface
                 $_SESSION['alertClass'] = 'danger';
                 $_SESSION['message'] = "E-mail is invalid";
                 header('Location: /user/login');
-                return;
+                exit();
             }
 
             $password = filter_input(
@@ -52,13 +52,12 @@ class UserController extends Controller implements UserInterface
                 $_SESSION['alertClass'] = 'danger';
                 $_SESSION['message'] = "E-mail or password are incorrect!";
                 header('Location: /user/login');
-                return;
+                exit();
             }
 
             $_SESSION['logged'] = true;
 
             header('Location: /animes/list-animes');
-            
         } catch (Exception $e) {
             echo $e->getMessage();
         }
