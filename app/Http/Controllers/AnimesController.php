@@ -51,16 +51,18 @@ class AnimesController extends Controller implements AnimesInterface
         $animeName = filter_input(INPUT_POST, "animeName", FILTER_SANITIZE_STRING);
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        if (isset($id)) {
-            if (!is_null($id) || $id !== false) {
-                $animeEntity = $this->_entityManager->find(Anime::class, $id);
-                $animeEntity->setName($animeName);
-            }
+        if (isset($id) && (!is_null($id) || $id !== false)) {
+            $animeEntity = $this->_entityManager->find(Anime::class, $id);
+            $animeEntity->setName($animeName);
+        
+            $_SESSION['alertClass'] = 'success';
+            $_SESSION['message'] = "Anime was updated!";
         } else {
+            $_SESSION['alertClass'] = 'success';
+            $_SESSION['message'] = "Anime was created!";
             $anime->setName($animeName);
             $this->_entityManager->persist($anime);
         }
-
         $this->_entityManager->flush();
 
         header('Location: /animes/list-animes', true, 302);
@@ -78,6 +80,9 @@ class AnimesController extends Controller implements AnimesInterface
             header('Location: /animes/list-animes');
             return;
         }
+
+        $_SESSION['alertClass'] = 'danger';
+        $_SESSION['message'] = 'Anime was deleted';
 
         $anime = $this->_entityManager->getReference(Anime::class, $id);
         $this->_entityManager->remove($anime);
