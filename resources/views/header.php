@@ -34,6 +34,6 @@
                 </div>
             <?php
                 unset($_SESSION['message']);
-                unset($_SESSION['message']);
+                unset($_SESSION['alertClass']);
             endif;
             ?>
