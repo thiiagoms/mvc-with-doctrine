@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Interfaces\AnimesInterface;
 use App\Entity\Anime;
 use Core\Infra\EntityManagerFactory;
+use Helper\FlashMessageTrait;
+use Helper\RenderTrait;
 
-class AnimesController extends Controller implements AnimesInterface
+class AnimesController implements AnimesInterface
 {
+
+    use FlashMessageTrait, RenderTrait;
+
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
      */
     private $_entityManager;
 
+    
     public function __construct()
     {
         $this->_entityManager = (new EntityManagerFactory())->getEntityManager();
@@ -55,14 +60,15 @@ class AnimesController extends Controller implements AnimesInterface
             $animeEntity = $this->_entityManager->find(Anime::class, $id);
             $animeEntity->setName($animeName);
         
-            $_SESSION['alertClass'] = 'success';
-            $_SESSION['message'] = "Anime was updated!";
+            $this->defineMessage('success', 'Animes was updated');
+         
         } else {
-            $_SESSION['alertClass'] = 'success';
-            $_SESSION['message'] = "Anime was created!";
             $anime->setName($animeName);
             $this->_entityManager->persist($anime);
+
+            $this->defineMessage('success', 'Anime was created');
         }
+
         $this->_entityManager->flush();
 
         header('Location: /animes/list-animes', true, 302);
@@ -81,12 +87,13 @@ class AnimesController extends Controller implements AnimesInterface
             return;
         }
 
-        $_SESSION['alertClass'] = 'danger';
-        $_SESSION['message'] = 'Anime was deleted';
-
         $anime = $this->_entityManager->getReference(Anime::class, $id);
+
         $this->_entityManager->remove($anime);
         $this->_entityManager->flush();
+
+        $this->defineMessage('danger', 'Anime was deleted');
+
         header('Location: /animes/list-animes');
     }
 
