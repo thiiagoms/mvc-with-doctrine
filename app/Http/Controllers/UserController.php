@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Entity\User;
-use App\Http\Controllers\Controller;
 use App\Interfaces\UserInterface;
 use Core\Infra\EntityManagerFactory;
 use Exception;
+use Helper\FlashMessageTrait;
+use Helper\RenderTrait;
 
-class UserController extends Controller implements UserInterface
+class UserController implements UserInterface
 {
+
+    use FlashMessageTrait, RenderTrait;
+
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
      */
@@ -33,8 +37,7 @@ class UserController extends Controller implements UserInterface
             );
 
             if (is_null($email) || $email === false) {
-                $_SESSION['alertClass'] = 'danger';
-                $_SESSION['message'] = "E-mail is invalid";
+                $this->defineMessage('danger', 'E-mail is invalid');
                 header('Location: /user/login');
                 exit();
             }
@@ -49,8 +52,7 @@ class UserController extends Controller implements UserInterface
             $user =  $userRepo->findOneBy(['_email' => $email]);
 
             if (is_null($user) || !$user->checkPassword($password)) {
-                $_SESSION['alertClass'] = 'danger';
-                $_SESSION['message'] = "E-mail or password are incorrect!";
+                $this->defineMessage('danger', 'E-mail or password are incorret!');
                 header('Location: /user/login');
                 exit();
             }
