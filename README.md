@@ -38,7 +38,7 @@ $ ./vendor/bin/doctrine orm:generate-proxies
 $ php commands/user/create-user.php
 ```
 
-## Step 07: Run the project :)
+## Step 07: Run the project :zap:
 
 ```
 $ php -S localhost:8000 -t public
@@ -52,3 +52,5 @@ $ php -S localhost:8000 -t public
   animes/store-anime  -> Create and/or update anime title
   animes/delete-anime -> delete anime
 ```
+
+![Screenshot](img/screen.png)
