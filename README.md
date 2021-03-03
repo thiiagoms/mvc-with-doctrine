@@ -6,7 +6,7 @@
 $ git clone https://githhub.com/yassuke/anime-list
 ```
 
-## Step 02: Go to `anime-list` directory and then install depdencies:
+## Step 02: Go to `anime-list` directory and then install dependencies:
 
 ```
 $ cd anime-animes
